@@ -1,6 +1,6 @@
 let timer;
 let isPaused = true;
-let initialDuration = 0.1; // Default duration in minutes
+let initialDuration = 60; // Default duration in minutes
 let remainingTime = initialDuration * 60;
 let sessionNumber = 1;
 

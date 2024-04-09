@@ -1,7 +1,7 @@
 
 var timer;
 var isPaused = true;
-var initialDuration = 0.1; // Default duration in minutes
+var initialDuration = 60; // Default duration in minutes
 var remainingTime = initialDuration * 60;
 var sessionNumber;
 

@@ -32,7 +32,7 @@ self.addEventListener('activate', event => {
 self.addEventListener('message', function (event) {
     if (event.data.key === 'showNotification') {
         self.registration.showNotification('Pomodoro Timer', {
-            body: 'Your timer has finished from service worker!'
+            body: 'Your timer has finished!'
         });
     }
 });
