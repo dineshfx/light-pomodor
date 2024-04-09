@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh Timer</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="stylesheet" href="fonts.css">
+
+<link rel="stylesheet" href="pomodor.css">
+<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+  <div class="container">
+
+  <div class="pomodor-wrapper">
+
+   <div class="pomodor-contents">
+
+    <h1 class="title">Dinesh Timer</h1>
+
+
+
+
+
+   <div id="timer">00:00</div>
+
+
+
+   <div class="button-group" >
+
+    <button id="toggle" onclick="togglePlayPause()" class="button primary">
+      Play
+      </button>
+      <button onclick="resetTimerUI()" class="button danger">Reset</button>
+
+   </div>
+
+<div class="session-container">
+   <div class="session-box">
+  <h1 class="title-session">Current Session</h1> <br>
+
+  <div class="session-group">
+    <button onclick="decrementSession()" id="sub" class="session-button">-</button>
+    <span id="sessionNumber">1</span>
+    <button onclick="incrementSession()" id="add"  class="session-button">+</button>
+  </div>
+
+   </div>
+  </div>
+   
+ <div class="session-completed">
+
+  <h1>Sessions Completed :</label> <span id="sessionCompleted">-</h1>
+ </div>
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+<script src="pomodoro.js"></script>
+</body>
+</html>

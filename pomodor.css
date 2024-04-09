@@ -1,0 +1,153 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+html,body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #ecf0f1;
+}
+
+.pomodor-wrapper{
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+
+
+    
+  
+}
+
+.pomodor-contents{
+
+width: 500px;
+
+}
+
+.title{
+
+    margin: 20px 0px;
+    text-align: center;
+    font-size: 50px;
+   
+}
+
+
+#timer{
+
+    font-size: 120px;
+    padding: 30px;
+    background-color: #34495e;   
+    color: white;
+    border-radius: 10px;
+
+    text-align: center;
+    
+
+    
+
+}
+
+.button{
+    padding: 10px 50px;
+  
+font-size: 20px;
+width: 100%;
+outline: none;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+
+}
+
+.primary{
+
+    background-color: #2980b9;
+    color: white;
+
+}
+
+
+.button-group{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
+
+.danger{
+    
+    color: white;
+    background-color: #e74c3c;
+}
+
+.session-group{
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 50px;
+    align-items: center;
+}
+
+
+.session-button{
+
+    font-size: 50px;
+   
+    width: 60px;
+
+    border: none;
+    border-radius: 10px;
+    background-color: #34495e;
+    color: white;
+    cursor: pointer;
+
+}
+
+.title-session{
+
+ 
+    text-align: center;
+    
+}
+
+
+#sessionNumber{
+
+    background-color: #16a085;
+   
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+   
+
+
+}
+
+
+.session-completed{
+
+    margin: 50px 0px;
+    text-align: center;
+    background-color: #34495e;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    
+
+   
+}
+
+#sessionCompleted{
+    color: yellow;
+}
