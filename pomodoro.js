@@ -19,6 +19,17 @@ var prom = new Promise((resolve,reject)=>{
 });
 
 
+document.addEventListener('keydown', function(event) {
+  if (event.key === ' ' || event.key === 'Spacebar') {
+
+
+      event.preventDefault();
+  }
+});
+
+
+
+
 
 worker = new Worker('timerWorker.js');
 worker.onmessage = function (event) {
