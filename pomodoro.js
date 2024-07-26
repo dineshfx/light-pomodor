@@ -8,7 +8,7 @@ var sessionNumber;
 let worker;
 
 let audio;
-
+audio = new Audio('alarm.wav');
 
 var prom = new Promise((resolve,reject)=>{
 
@@ -97,7 +97,7 @@ worker.onmessage = function (event) {
   
       // Load state from localStorage on page load - starting point
       notificationPermission();
-      audio = new Audio('supermario.wav');
+      // audio = new Audio('alarm.wav');
       loadFromLocalStorage();
       if (!isPaused) {
           resetTimer2();
