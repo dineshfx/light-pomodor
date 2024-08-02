@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjust Timer Duration</title>
+    <style>
+
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+     background-color: black;
+
+        }
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background-color: gray;
+            padding: 50px;
+            color: white;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        #btn{
+            width: 150px;
+            padding: 10px;
+            border:none;
+            border-radius: 10px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+          
+        }
+        #btn:hover{
+            background-color: rgb(80, 40, 40);
+            color: white;
+        }
+
+        input{
+            width: 100%;
+            height: 20px;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            padding: 10px;
+        }
+
+        input:focus{
+         
+           color: green;
+     
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="content">
+
+            <h1>Adjust Timer Duration</h1>
+
+            <input type="number" id="timer" placeholder="Enter time in minutes">
+
+            <button id="btn" onclick="updateTimer()">Update Duration</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        function updateTimer(){
+            const minutes = + document.getElementById('timer').value;
+            if(minutes === 0){
+                alert('Please enter minutes');
+                 return;
+            }
+
+            
+            const seconds = minutes * 60;
+
+            const timerState = JSON.parse(localStorage.getItem('pomodoroTimerState'));
+           if(timerState !== null){
+
+            timerState.remainingTime = seconds;
+            localStorage.setItem('pomodoroTimerState',JSON.stringify(timerState));
+            alert('Timer duration updated');
+         
+           }
+
+         
+
+          
+        }
+    </script>
+    
+</body>
+</html>
