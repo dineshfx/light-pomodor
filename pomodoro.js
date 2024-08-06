@@ -77,6 +77,11 @@ worker.onmessage = function (event) {
           if (event.data.key === 'completed') {
               // Handle timer completion
              // document.getElementById('timer').textContent = 'Session Completed';
+
+          
+
+
+
               document.querySelector('#toggle').textContent = 'Play';
               updateSessionNumberUI(event.data.value.sessionNumber);
               sessionNumber = event.data.value.sessionNumber;
@@ -96,12 +101,16 @@ worker.onmessage = function (event) {
               saveToLocalStorage();
               playAlarm();
               //showNotification();
+              
+                 //end time logic start
+             clearInterval(InitialEndTimerInterval);
+             endTimeIntervalFunction(remainingTime);
+             //end time Logic end
 
 
   postMessageToServiceWorker({ key: 'showNotification' });
 
-  clearInterval(InitialEndTimerInterval);
-  endTimeIntervalFunction(remainingTime);
+
 
 
 
