@@ -104,7 +104,7 @@ worker.onmessage = function (event) {
               
                  //end time logic start
              clearInterval(InitialEndTimerInterval);
-             endTimeIntervalFunction(remainingTime);
+             endTimeIntervalFunction(initialDuration * 60);
              //end time Logic end
 
 
