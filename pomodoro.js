@@ -13,7 +13,7 @@ audio = new Audio('alarm.wav');
 //end time calculat logic starts
 
 let InitialEndTimerInterval;
-
+let isIntervalRunning = false;
 
 function calculateEndTime(secondsRemaining) {
   const now = new Date(); // Current time
@@ -38,10 +38,12 @@ function endTimeCalculator(remainingTime){
 
 
 function endTimeIntervalFunction(remainingTime){
-  endTimeCalculator(remainingTime);
+  //endTimeCalculator(remainingTime);
+  isIntervalRunning = true;
   InitialEndTimerInterval = setInterval(()=>{
     endTimeCalculator(remainingTime);
-  },1000)
+  },300)
+  //adjust interval second to achieve realtime timer end time 300 is perfect
 }
 
 
@@ -78,7 +80,11 @@ worker.onmessage = function (event) {
               // Handle timer completion
              // document.getElementById('timer').textContent = 'Session Completed';
 
-          
+                    //end time logic start
+             //clearInterval(InitialEndTimerInterval);
+             endTimeIntervalFunction(initialDuration * 60);
+             //end time Logic end
+
 
 
 
@@ -102,11 +108,7 @@ worker.onmessage = function (event) {
               playAlarm();
               //showNotification();
               
-                 //end time logic start
-             clearInterval(InitialEndTimerInterval);
-             endTimeIntervalFunction(initialDuration * 60);
-             //end time Logic end
-
+       
 
   postMessageToServiceWorker({ key: 'showNotification' });
 
@@ -170,6 +172,7 @@ worker.onmessage = function (event) {
         document.getElementById('sub').disabled = true;
 
         //endtimer interval clear code
+        isIntervalRunning = false;
         clearInterval(InitialEndTimerInterval);
         
       } else {
@@ -233,19 +236,38 @@ worker.onmessage = function (event) {
     // }
 
     function resetTimerUI() {
+
+      //
+      remainingTime = initialDuration * 60;
+
+      if(isIntervalRunning){
+        console.log("yes Interval running");
+        isIntervalRunning = false;
+        clearInterval(InitialEndTimerInterval);
+    
+      }else{
+        console.log("No Interval is not running");
+        
+      }
+      
+
+      endTimeIntervalFunction(initialDuration * 60);
+ 
+
+
+
       stopAlarm();
       isPaused = true;
       worker.postMessage({key:'clearInterval',value:isPaused});
       var display = document.getElementById('timer');
-       remainingTime = initialDuration * 60;
+
       display.textContent = formatTime(remainingTime);
       document.querySelector('#toggle').textContent = 'Play';
       document.getElementById('add').disabled = false;
       document.getElementById('sub').disabled = false;
       saveToLocalStorageWorker(remainingTime);
 
-      clearInterval(InitialEndTimerInterval);
-      endTimeIntervalFunction(remainingTime);
+ 
     }
 
 
@@ -346,12 +368,19 @@ worker.onmessage = function (event) {
         isPaused = savedState.isPaused;
         remainingTime = savedState.remainingTime;
         sessionNumber = savedState.sessionNumber;
+                
+        //end Timer Logic
+        // endTimeCalculator(remainingTime);
+        endTimeIntervalFunction(remainingTime);
+        //end timer logic ends
+     
 
         var display = document.getElementById('timer');
         display.textContent = formatTime(remainingTime);
 
         var playPauseButton = document.querySelector('#toggle');
         playPauseButton.textContent = isPaused ? 'Play' : 'Pause';
+        console.log(isPaused);
 
         var sessionNumberDiv = document.getElementById('sessionNumber');
         sessionNumberDiv.textContent = sessionNumber;
@@ -365,12 +394,7 @@ worker.onmessage = function (event) {
           document.getElementById('sessionCompleted').textContent  = "None";
         }
 
-        //end Timer Logic
 
-
-        endTimeCalculator(remainingTime);
-        endTimeIntervalFunction(remainingTime);
-     
 
       
 
