@@ -14,6 +14,8 @@ audio = new Audio('alarm.wav');
 
 let InitialEndTimerInterval;
 let isIntervalRunning = false;
+let previousRemainingTime = null;
+
 
 function calculateEndTime(secondsRemainings) {
   const now = new Date(); // Current time
@@ -128,11 +130,41 @@ worker.onmessage = function (event) {
 
           } 
         else if(event.data.key=='remainingTime') {
+
+          //old code start
               // Update timer display
-              console.log(event.data.value)
-              endTimeCalculator(event.data.value);
-              updateTimer(event.data.value);
-              remainingTime = event.data.value;
+              // console.log(event.data.value)
+              // endTimeCalculator(event.data.value);
+              // updateTimer(event.data.value);
+              // remainingTime = event.data.value;
+          //old code end
+
+     //new code Starts
+     // Get the current remaining time from the message data
+        const currentRemainingTime = event.data.value;
+        
+        // Log the current remaining time
+        console.log(currentRemainingTime);
+        
+        // Check if previousRemainingTime is not null
+        if (previousRemainingTime !== null) {
+            // Compare with previousRemainingTime
+            if (currentRemainingTime === previousRemainingTime) {
+                console.log('Remaining time is the same as the previous value.');
+            }
+        }
+        
+        // Update previousRemainingTime to the current value
+        previousRemainingTime = currentRemainingTime;
+        
+        // Perform other updates
+        endTimeCalculator(currentRemainingTime);
+        updateTimer(currentRemainingTime);
+        remainingTime = event.data.value;
+//new code ends
+
+
+
           } else if(event.data.key=='isPaused') {
             // Update timer display
 
