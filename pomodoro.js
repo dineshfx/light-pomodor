@@ -150,12 +150,12 @@ worker.onmessage = function (event) {
   
 
 
-  function updateTimer(remainingTime) {
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
+  function updateTimer(remainingTime_update) {
+    const minutes = Math.floor(remainingTime_update / 60);
+    const seconds = remainingTime_update % 60;
     document.getElementById('timer').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    endTimeCalculator(remainingTime)
-    saveToLocalStorageWorker(remainingTime);
+    endTimeCalculator(remainingTime_update)
+    saveToLocalStorageWorker(remainingTime_update);
   }
 
 
