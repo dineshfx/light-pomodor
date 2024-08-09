@@ -129,6 +129,8 @@ worker.onmessage = function (event) {
           } 
         else if(event.data.key=='remainingTime') {
               // Update timer display
+              console.log(event.data.value)
+              endTimeCalculator(event.data.value);
               updateTimer(event.data.value);
               remainingTime = event.data.value;
           } else if(event.data.key=='isPaused') {
@@ -156,7 +158,7 @@ worker.onmessage = function (event) {
     const minutes = Math.floor(remainingTime_update / 60);
     const seconds = remainingTime_update % 60;
     document.getElementById('timer').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    endTimeCalculator(remainingTime_update)
+    // endTimeCalculator(remainingTime_update)
     saveToLocalStorageWorker(remainingTime_update);
   }
 
