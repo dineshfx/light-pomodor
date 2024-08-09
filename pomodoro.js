@@ -15,9 +15,9 @@ audio = new Audio('alarm.wav');
 let InitialEndTimerInterval;
 let isIntervalRunning = false;
 
-function calculateEndTime(secondsRemaining) {
+function calculateEndTime(secondsRemainings) {
   const now = new Date(); // Current time
-  const endTime = new Date(now.getTime() + secondsRemaining * 1000); // Add remaining seconds
+  const endTime = new Date(now.getTime() + secondsRemainings * 1000); // Add remaining seconds
   return endTime;
 }
 function formatDateForEndtime(date) {
@@ -31,8 +31,9 @@ function formatDateForEndtime(date) {
 }
 
 
-function endTimeCalculator(remainingTime){
-  const endTime = calculateEndTime(parseInt(remainingTime));
+function endTimeCalculator(remainingTimeEndTime){
+
+  const endTime = calculateEndTime(parseInt(remainingTimeEndTime));
   document.getElementById('end-timer').textContent = formatDateForEndtime(endTime);
 }
 
@@ -42,6 +43,7 @@ function endTimeIntervalFunction(remainingTime){
   isIntervalRunning = true;
   InitialEndTimerInterval = setInterval(()=>{
     endTimeCalculator(remainingTime);
+
   },300)
   //adjust interval second to achieve realtime timer end time 300 is perfect
 }
