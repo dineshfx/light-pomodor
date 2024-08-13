@@ -58,6 +58,7 @@ function startTimer(remainingTime) {
     timer = setInterval(function () {
         if (!isPaused) {
             const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+         
             const timeLeft = remainingTime - elapsedTime;
 
             if (timeLeft <= 0) {

@@ -144,7 +144,7 @@ worker.onmessage = function (event) {
         const currentRemainingTime = event.data.value;
         
         // Log the current remaining time
-        console.log(currentRemainingTime);
+        //console.log(currentRemainingTime);
         
         // Check if previousRemainingTime is not null
         if (previousRemainingTime !== null) {
@@ -215,7 +215,7 @@ worker.onmessage = function (event) {
         playPauseButton.textContent = 'Play';
         document.getElementById('add').disabled = false;
         document.getElementById('sub').disabled = false;
-        console.log(remainingTime)
+        //console.log(remainingTime)
         endTimeIntervalFunction(remainingTime);
 
       }
