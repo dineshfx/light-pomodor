@@ -549,3 +549,27 @@ worker.onmessage = function (event) {
         });
     } 
 }
+
+
+function changeTo120(){
+
+
+  const minutes =  120;
+
+            
+            const seconds = minutes * 60;
+
+            const timerState = JSON.parse(localStorage.getItem('pomodoroTimerState'));
+            console.log(timerState)
+           if(timerState !== null){
+
+            timerState.remainingTime = seconds;
+            localStorage.setItem('pomodoroTimerState',JSON.stringify(timerState));
+            location.reload();
+
+     
+         
+           }
+
+
+}
